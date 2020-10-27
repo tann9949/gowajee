@@ -42,7 +42,7 @@ utils/prepare_lang.sh --position-dependent-phones $pos_dep_phones \
 local/gowajee_format_data.sh || exit 1
 
 # Now make MFCC features.
-mfccdir=${DATA_ROOT}/mfcc
+mfccdir=mfcc
 for x in train dev; do
     steps/make_mfcc.sh --cmd "$train_cmd" --nj $njobs \
         data/$x exp/make_mfcc/$x $mfccdir || exit 1;
