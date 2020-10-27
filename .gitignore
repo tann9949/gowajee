@@ -4,6 +4,7 @@ docker/srilm*
 gowajee/s5/*
 !gowajee/s5/data
 !gowajee/s5/conf
+!gowajee/s5/g2p
 !gowajee/s5/local
 !gowajee/s5/path.sh
 !gowajee/s5/cmd.sh
