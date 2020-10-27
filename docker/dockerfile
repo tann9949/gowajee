@@ -1,6 +1,6 @@
 FROM kaldiasr/kaldi:latest
 
-ENV SRILM="/usr/share/srilm"
+ENV SRILM="/opt/kaldi/tools/srilm"
 COPY srilm-1.7.3.tar.gz ${SRILM}/srilm-1.7.3.tar.gz
 RUN tar -xvf ${SRILM}/srilm-1.7.3.tar.gz --directory ${SRILM}
 
