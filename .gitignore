@@ -11,6 +11,9 @@ gowajee/s5/*
 !gowajee/s5/utils
 !gowajee/s5/run.sh
 
+gowajee/s5/g2p/*
+!gowajee/s5/g2p/model-5
+
 gowajee/s5/data/*
 !gowajee/s5/data/train
 !gowajee/s5/data/dev

@@ -49,10 +49,14 @@ $ bash run_kaldi.sh
 ```
 
 ## Usage
-Once you enter Kaldi, 
+We provide `run.sh` script that will execute the pipeline starting from preparing data up to training the model
+
+```bash
+$ bash run.sh
+```
 
 ## Dataset Description
-*TODO:*
+See [here](https://github.com/ekapolc/gowajee_corpus/tree/master) for more details.
 
 ## Experiment Results
 *TODO:*
