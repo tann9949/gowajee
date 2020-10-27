@@ -67,7 +67,7 @@ steps/align_si.sh --nj $njobs --cmd "$train_cmd" \
 
 # train tri1 [first triphone pass]
 steps/train_deltas.sh --cmd "$train_cmd" \
-    data/train data/lang exp/mono exp/mono_ali || exit 1;
+    2000 11000 data/train data/lang exp/mono exp/mono_ali || exit 1;
 
 # decode tri1
 utils/mkgraph.sh data/lang exp/tri1/graph || exit 1;
