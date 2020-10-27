@@ -1,3 +1,6 @@
+**/.DS_Store
+docker/srilm*
+
 gowajee/s5/*
 !gowajee/s5/data
 !gowajee/s5/conf
