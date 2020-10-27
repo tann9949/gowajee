@@ -1,0 +1,21 @@
+FROM kaldiasr/kaldi:latest
+
+ENV SRILM="/usr/share/srilm"
+COPY srilm-1.7.3.tar.gz ${SRILM}/srilm-1.7.3.tar.gz
+RUN tar -xvf ${SRILM}/srilm-1.7.3.tar.gz --directory ${SRILM}
+
+
+RUN apt-get update && apt-get upgrade -y
+
+RUN apt-get install -y \
+    swig \
+    python-pip \
+    cmake
+
+RUN pip install numpy 
+RUN pip install git+https://github.com/sequitur-g2p/sequitur-g2p@master
+
+RUN cd ${SRILM}; make
+ENV PATH="$PATH:$SRILM/bin/i686-m64/"
+
+WORKDIR /opt/kaldi
