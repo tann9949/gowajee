@@ -5,11 +5,11 @@
 # Apache 2.0
 # Modify by Chompakorn Chaksangchaichot for Gowajee dataset
 
-. ./path.sh || exit 1
+. ./path.sh || exit 1;
 
 # If you have cluster of machines running GridEngine you may want to
 # change the train and decode commands in the file below
-. ./cmd.sh || exit 1
+. ./cmd.sh || exit 1;
 
 # The number of parallel jobs to be started for some parts of the recipe
 # Make sure you have enough resources(CPUs and RAM) to accomodate this number of jobs
@@ -28,7 +28,7 @@ pos_dep_phones=true
 [[ $# -ge 1 ]] && { echo "Unexpected arguments"; exit 1; }
 
 # Prepare ARPA LM and vocabulary using SRILM
-local/gowajee_prepare_lm.sh --order ${lm_order} || exit 1
+local/gowajee_prepare_lm.sh --order ${lm_order} || exit 1;
 
 # Prepare the lexicon and various phone lists
 # Pronunciations for OOV words are obtained using a pre-trained Sequitur model
@@ -36,7 +36,7 @@ local/gowajee_prepare_dict.sh || exit 1;
 
 # Prepare data/lang and data/local/lang directories
 utils/prepare_lang.sh --position-dependent-phones $pos_dep_phones \
-   data/local/dict '!SIL' data/local/lang data/lang || exit 1
+   data/local/dict '!SIL' data/local/lang data/lang || exit 1;
 
 # Prepare G.fst and data/{train,dev} directories
 local/gowajee_format_data.sh || exit 1
@@ -50,27 +50,33 @@ for x in train dev; do
 done
 
 # Train monophone models
+echo "\n--- Training mono ..."
 steps/train_mono.sh --nj $njobs --cmd "$train_cmd" data/train data/lang exp/mono || exit 1;
 
 # Monophone decoding
 # we use the same language model for both train / dev, the same as official benchmark
+echo -ne "\n--- Making mono graph ..."
 utils/mkgraph.sh data/lang exp/mono exp/mono/graph || exit 1;
 # note: local/decode.sh calls the command line once for each
 # test, and afterwards averages the WERs into (in this case
 # exp/mono/decode/
+echo -ne "\n--- Decoding mono ..."
 steps/decode.sh --config conf/decode.config --nj $njobs --cmd "$decode_cmd" \
     exp/mono/graph data/dev exp/mono/decode
 
+echo -ne "\n--- Aligning mono ..."
 # Get alignments from monophone system.
 steps/align_si.sh --nj $njobs --cmd "$train_cmd" \
     data/train data/lang exp/mono exp/mono_ali || exit 1;
 
 # train tri1 [first triphone pass]
+echo -ne "\n--- Making tri1 ..."
 steps/train_deltas.sh --cmd "$train_cmd" \
-    2000 11000 data/train data/lang exp/mono exp/mono_ali || exit 1;
+    2000 11000 data/train data/lang exp/mono_ali exp/tri1 || exit 1;
 
 # decode tri1
-utils/mkgraph.sh data/lang exp/tri1/graph || exit 1;
+echo -ne "\n--- Decoding tri1 ..."
+utils/mkgraph.sh data/lang exp/tri1 exp/tri1/graph || exit 1;
 steps/decode.sh --config conf/decode.config --nj $njobs --cmd "$decode_cmd" \
     exp/tri1/graph data/dev exp/tri1/decode
 
