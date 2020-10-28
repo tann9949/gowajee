@@ -10,7 +10,9 @@ RUN apt-get update && apt-get upgrade -y
 RUN apt-get install -y \
     swig \
     python-pip \
-    cmake
+    cmake \
+    graphviz \
+    ghostscript
 
 RUN pip install numpy 
 RUN pip install git+https://github.com/sequitur-g2p/sequitur-g2p@master
