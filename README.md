@@ -59,7 +59,7 @@ $ bash run.sh
 See [here](https://github.com/ekapolc/gowajee_corpus/tree/master) for more details.
 
 ## Experiment Results
-*TODO:*
+Since 
 
 ## Author
 Chompakorn Chaksangchaichot
