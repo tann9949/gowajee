@@ -1,32 +1,40 @@
 **/.DS_Store
 docker/srilm*
 
-gowajee/s5/*
-!gowajee/s5/data
-!gowajee/s5/conf
-!gowajee/s5/g2p
-!gowajee/s5/local
-!gowajee/s5/path.sh
-!gowajee/s5/cmd.sh
-!gowajee/s5/steps
-!gowajee/s5/utils
-!gowajee/s5/run.sh
+gowajee/online_demo/*
+!gowajee/online_demo/run.sh
+!gowajee/online_demo/README.txt
 
-gowajee/s5/g2p/*
-!gowajee/s5/g2p/model-5
+gowajee/gst_demo/*
+!gowajee/gst_demo/run.sh
+!gowajee/gst_demo/README.txt
 
-gowajee/s5/data/*
-!gowajee/s5/data/train
-!gowajee/s5/data/dev
+gowajee/s5*/*
+!gowajee/s5*/data
+!gowajee/s5*/conf
+!gowajee/s5*/g2p
+!gowajee/s5*/local
+!gowajee/s5*/path.sh
+!gowajee/s5*/cmd.sh
+!gowajee/s5*/steps
+!gowajee/s5*/utils
+!gowajee/s5*/run.sh
 
-gowajee/s5/data/train/*
-!gowajee/s5/data/train/spk2utt
-!gowajee/s5/data/train/utt2spk
-!gowajee/s5/data/train/text
-!gowajee/s5/data/train/wav.scp
+gowajee/s5*/g2p/*
+!gowajee/s5*/g2p/model-5
 
-gowajee/s5/data/dev/*
-!gowajee/s5/data/dev/spk2utt
-!gowajee/s5/data/dev/utt2spk
-!gowajee/s5/data/dev/text
-!gowajee/s5/data/dev/wav.scp
+gowajee/s5*/data/*
+!gowajee/s5*/data/train
+!gowajee/s5*/data/dev
+
+gowajee/s5*/data/train/*
+!gowajee/s5*/data/train/spk2utt
+!gowajee/s5*/data/train/utt2spk
+!gowajee/s5*/data/train/text
+!gowajee/s5*/data/train/wav.scp
+
+gowajee/s5*/data/dev/*
+!gowajee/s5*/data/dev/spk2utt
+!gowajee/s5*/data/dev/utt2spk
+!gowajee/s5*/data/dev/text
+!gowajee/s5*/data/dev/wav.scp
