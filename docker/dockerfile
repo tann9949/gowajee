@@ -1,5 +1,8 @@
 FROM kaldiasr/kaldi:latest
 
+WORKDIR /opt/kaldi/src
+RUN make ext
+
 ENV SRILM="/opt/kaldi/tools/srilm"
 COPY srilm-1.7.3.tar.gz ${SRILM}/srilm-1.7.3.tar.gz
 RUN tar -xvf ${SRILM}/srilm-1.7.3.tar.gz --directory ${SRILM}
@@ -12,12 +15,20 @@ RUN apt-get install -y \
     python-pip \
     cmake \
     graphviz \
-    ghostscript
+    ghostscript \
+    libasound-dev \
+    alsa-utils
 
 RUN pip install numpy 
 RUN pip install git+https://github.com/sequitur-g2p/sequitur-g2p@master
 
-RUN cd ${SRILM}; make
+WORKDIR ${SRILM}
+RUN make
 ENV PATH="$PATH:$SRILM/bin/i686-m64/"
+
+WORKDIR /opt/kaldi/tools
+RUN ./install_portaudio.sh
+WORKDIR /opt/kaldi/tools/portaudio
+RUN ./configure && make
 
 WORKDIR /opt/kaldi
