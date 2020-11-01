@@ -9,8 +9,8 @@ if [ $# -ne 0 ]; then
 fi
 
 if [ ! -f data/dic5k.formatted.txt ]; then
-    echo "dic5k.formatted.txt not exists. Loading one..."
-    wget "https://github.com/ekapolc/ASR_classproject/blob/master/g2p/dic5k.formatted.txt" -O data/dic5k.formatted.txt
+    echo "dic5k.formatted.txt not exists. Downloading..."
+    wget "https://raw.githubusercontent.com/ekapolc/ASR_classproject/master/g2p/dic5k.formatted.txt" -O data/dic5k.formatted.txt
 fi
 
 mkdir -p g2p
