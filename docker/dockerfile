@@ -17,7 +17,14 @@ RUN apt-get install -y \
     graphviz \
     ghostscript \
     libasound-dev \
-    alsa-utils
+    alsa-utils \
+    libasound2 \
+    libasound2-plugins \
+    pulseaudio \
+    pulseaudio-utils \
+    vorbis-tools \
+    sox \
+    && rm -rf /var/lib/apt/lists/* 
 
 RUN pip install numpy 
 RUN pip install git+https://github.com/sequitur-g2p/sequitur-g2p@master
