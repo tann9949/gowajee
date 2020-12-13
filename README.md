@@ -26,21 +26,7 @@ To download the Gowajee Corpus, check the official release repository from this 
 ### Building and run docker
 We provide a dockerfile to build a Kaldi docker containing SRILM and sequitur G2P. We provide a shell script that will both build and run docker at the same time.
 
-However, your path to Gowajee Dataset (which you downloaded from last section) should be different from mine configuration, so **MAKE SURE YOU CHANGE A PATH OF THE DATASET IN `run_kaldi.sh`**.
-
-```bash
-# build docker
-docker build -t chompk/kaldi docker;
-# run docker
-docker run -it \
--v "$PWD/../../dataset/gowajee/:/mnt/gowajee" \
--v "<path-to-gowajee>:/opt/kaldi/egs/gowajee" \   # <- Make sure you change path to Gowajee Dataset
--e KALDI_ROOT="/opt/kaldi" \
--e GOWAJEE_ROOT="/mnt/gowajee" \
--w "/opt/kaldi/egs/gowajee/s5" \
-chompk/kaldi:latest bash;
-
-```
+Copy downloaded directory which includes `audios`, `train`, `dev`, and `test`. `lu` set is optional as we won't use it here.
 
 Once you finish changing the path, run `run_kaldi.sh` script to run Kaldi.
 
@@ -59,7 +45,24 @@ $ bash run.sh
 See [here](https://github.com/ekapolc/gowajee_corpus/tree/master) for more details.
 
 ## Experiment Results
-Since 
+We train the model using `mfcc_pitch` feats on `voxforge` recipe. The following table shows the experiment results.
+
+|Model|dev WER|test WER|
+|:----|:----:|:-----:|
+|mono|%|%|
+|tri1|%|%|
+|tri2a|%|%|
+|tri2b|%|%|
+|tri2b_dentlas|%|%|
+|tri2b_mmi|%|%|
+|tri2b_mmi_b0.05|%|%|
+|tri2b_mpe|%|%|
+|tri3b|%|%|
+|tri3b_dentlas|%|%|
+|tri3b_fmmi_b|%|%|
+|tri3b_fmmi_c|%|%|
+|tri3b_fmmi_d|%|%|
+|tri3b_mmi|%|%|
 
 ## Author
 Chompakorn Chaksangchaichot
