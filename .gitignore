@@ -1,6 +1,8 @@
 **/.DS_Store
 docker/srilm*
 
+gowajee/s5/audios
+
 gowajee/online_demo/*
 !gowajee/online_demo/run.sh
 !gowajee/online_demo/README.txt
