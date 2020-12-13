@@ -1,4 +1,4 @@
-#!/usr/bin/env bash
+#!/bin/bash
 
 # voxforge kaldi's recipe
 # Copyright 2012 Vassil Panayotov
@@ -13,7 +13,7 @@
 
 # The number of parallel jobs to be started for some parts of the recipe
 # Make sure you have enough resources(CPUs and RAM) to accomodate this number of jobs
-njobs=2
+njobs=$(nproc)
 
 # language model order
 lm_order=2
@@ -43,8 +43,8 @@ local/gowajee_format_data.sh || exit 1
 
 # Now make MFCC features.
 mfccdir=mfcc
-for x in train dev; do
-    steps/make_mfcc.sh --cmd "$train_cmd" --nj $njobs \
+for x in train dev test; do
+    steps/make_mfcc_pitch.sh --cmd "$train_cmd" --nj $njobs \
         data/$x exp/make_mfcc/$x $mfccdir || exit 1;
     steps/compute_cmvn_stats.sh data/$x exp/make_mfcc/$x $mfccdir || exit 1;
 done
