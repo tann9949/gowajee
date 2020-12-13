@@ -45,24 +45,26 @@ $ bash run.sh
 See [here](https://github.com/ekapolc/gowajee_corpus/tree/master) for more details.
 
 ## Experiment Results
-We train the model using `mfcc_pitch` feats on `voxforge` recipe. The following table shows the experiment results.
+We train the model using `mfcc_pitch` feats on `voxforge` recipe. The following table shows the experiment results where LMWT were set to 17 for all models since it yields the best WER so far.
 
 |Model|dev WER|test WER|
 |:----|:----:|:-----:|
-|mono|%|%|
-|tri1|%|%|
-|tri2a|%|%|
-|tri2b|%|%|
-|tri2b_dentlas|%|%|
-|tri2b_mmi|%|%|
-|tri2b_mmi_b0.05|%|%|
-|tri2b_mpe|%|%|
-|tri3b|%|%|
-|tri3b_dentlas|%|%|
-|tri3b_fmmi_b|%|%|
-|tri3b_fmmi_c|%|%|
-|tri3b_fmmi_d|%|%|
-|tri3b_mmi|%|%|
+|mono|40.98%|22.71%|
+|tri1|33.95%|19.71%|
+|tri2a|33.76%|19.71%|
+|tri2b|31.26%|19.87%|
+|tri2b_mmi (it3)|32.21%|-|
+|tri2b_mmi_b0.05 (it3)|31.89%|-|
+|tri2b_mpe|31.67%|19.83%|
+|tri3b (si)|31.42%|17.08%|
+|tri3b_mmi (si)|31.42%|17.08%|
+|tri3b*|21.30%|10.52%|
+|tri3b_fmmi_b (iter3)*|19.70%|-|
+|tri3b_fmmi_c (iter4)*|20.41%|-|
+|tri3b_fmmi_d (iter4)*|20.62%|10.27%|
+|tri3b_mmi*|22.09%|11.36%|
+|tri3b_mmi (decode2)*|21.55%|11.36%|
+*denotes speaker dependent training
 
 ## Author
 Chompakorn Chaksangchaichot
