@@ -64,7 +64,11 @@ We train the model using `mfcc_pitch` feats on `voxforge` recipe. The following 
 |tri3b_fmmi_d (iter4)*|20.62%|10.27%|
 |tri3b_mmi*|22.09%|11.36%|
 |tri3b_mmi (decode2)*|21.55%|11.36%|
+
 *denotes speaker dependent training
+
+## References
+>Ekapol Chuangsuwanich, Atiwong Suchato, Korrawe Karunratanakul, Burin Naowarat, Chompakorn CChaichot,and Penpicha Sangsa-nga. Gowajee Corpus. Technical report, Chulalongkorn University, Faculty of Engineering,Computer Engineering Department, 12 2020
 
 ## Author
 Chompakorn Chaksangchaichot
