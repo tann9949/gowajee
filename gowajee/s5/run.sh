@@ -64,6 +64,9 @@ echo -ne "\n--- Decoding mono ..."
 steps/decode.sh --config conf/decode.config --nj $njobs --cmd "$decode_cmd" \
     exp/mono/graph data/dev exp/mono/decode
 
+steps/decode.sh --config conf/decode.config --nj $njobs --cmd "decode_cmd" \
+    exp/mono/graph data/test exp/mono/decode_test
+
 echo -ne "\n--- Aligning mono ..."
 # Get alignments from monophone system.
 steps/align_si.sh --nj $njobs --cmd "$train_cmd" \
@@ -79,6 +82,9 @@ echo -ne "\n--- Decoding tri1 ..."
 utils/mkgraph.sh data/lang exp/tri1 exp/tri1/graph || exit 1;
 steps/decode.sh --config conf/decode.config --nj $njobs --cmd "$decode_cmd" \
     exp/tri1/graph data/dev exp/tri1/decode
+
+steps/decode.sh --config conf/decode.config --nj $njobs --cmd "$decode_cmd" \
+    exp/tri1/graph data/test exp/tri1/decode_test
 
 #draw-tree data/lang/phones.txt exp/tri1/tree | dot -Tps -Gsize=8,10.5 | ps2pdf - tree.pdf
 
@@ -102,6 +108,8 @@ steps/train_lda_mllt.sh --cmd "$train_cmd" 2000 11000 \
 utils/mkgraph.sh data/lang exp/tri2b exp/tri2b/graph
 steps/decode.sh --config conf/decode.config --nj $njobs --cmd "$decode_cmd" \
     exp/tri2b/graph data/dev exp/tri2b/decode
+steps/decode.sh --config conf/decode.config --nj $njobs --cmd "$decode_cmd" \
+    exp/tri2b/graph data/test exp/tri2b/decode_test
 
 # Align all data with LDA+MLLT system (tri2b)
 steps/align_si.sh --nj $njobs --cmd "$train_cmd" --use-graphs true \
