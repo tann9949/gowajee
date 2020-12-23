@@ -28,6 +28,7 @@ gowajee/s5*/g2p/*
 gowajee/s5*/data/*
 !gowajee/s5*/data/train
 !gowajee/s5*/data/dev
+!gowajee/s5*/data/test
 
 gowajee/s5*/data/train/*
 !gowajee/s5*/data/train/spk2utt
