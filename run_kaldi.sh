@@ -1,5 +1,5 @@
 # build docker
-docker build -t chompk/kaldi docker || exit 1;
+# docker build -t chompk/kaldi docker || exit 1;
 # run docker
 docker run -it --rm \
 -v "$PWD/gowajee/:/opt/kaldi/egs/gowajee" \
